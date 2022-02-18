@@ -501,24 +501,36 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    width: 100%;
+    text-align: center;
   }
-  .hero-content {
+  .topnav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .main-navbar{
+    display: flex;
+    align-items: center;
+  }
+  main .hero-section .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding:0;
   }
   .hero-content::after {
     content: unset;
+    width: 100%;
   }
   .hero-content .btn-signup {
-    display: none;
+    /* display: none; */
   }
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
+    width: 300px;
     font-size: 1.5rem;
   }
   .hero-img img {
