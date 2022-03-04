@@ -92,15 +92,15 @@ $closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 $subscribeForm.addEventListener("submit", handleSubmit);
 
 $inputEmail.addEventListener("input", function () {
-  setErrorValidity($inputEmail, $formdataEmail, isEmailValid)
+  $formdataEmail.setAttribute('data-error-visible', !isEmailValid($inputEmail));
 }, false);
 
 $inputFirstName.addEventListener("input", function () {
-  $formdataFirstName.setAttribute('data-error-visible', $inputFirstName.value.length >= $minInputLength)
+  $formdataFirstName.setAttribute('data-error-visible', $inputFirstName.value.length <= $minInputLength)
 }, false);
 
 $inputLastName.addEventListener("input", function () {
-  $formdataLastName.setAttribute('data-error-visible', $inputLastName.value.length >= $minInputLength)
+  $formdataLastName.setAttribute('data-error-visible', $inputLastName.value.length <= $minInputLength)
 }, false);
 
 $inputBirthDate.addEventListener("input", function () {
@@ -119,10 +119,11 @@ $form.addEventListener("submit", function (event) {
 
   const $inputCheckboxCgu = document.getElementById('input-checkboxcgu')
   $formdataCgu.setAttribute("data-error-visible", !$inputCheckboxCgu.checked)
-
-  $formdataFirstName.setAttribute('data-error-visibility', $inputFirstName.value === "")
-  $formdataLastName.setAttribute('data-error-visibility', $inputLastName.value === "")
-  $formdataEmail.setAttribute('data-error-visibility', $inputEmail.value === "")
+  $formdataFirstName.setAttribute('data-error-visible', $inputFirstName.value === "" || $inputFirstName.value.length <= $minInputLength)
+  $formdataLastName.setAttribute('data-error-visible', $inputLastName.value === "" || $inputLastName.value.length <= $minInputLength)
+  $formdataEmail.setAttribute('data-error-visible', $inputEmail.value === "")
+  $formdataBirthDate.setAttribute('data-error-visible', $inputBirthDate.value === "")
+  $formdataNbreTournament.setAttribute('data-error-visible', $inputNbreTournament.value === "" )
   if(isFormValid()){
     $form.style.display = "none";
     $modalThanks.style.display = "flex";
